@@ -1,4 +1,14 @@
+ExpressJS Authentication
+-------------------------------------
+Ứng dụng đăng nhập đơn giản đầy đủ các chức năng để tham khảo:
+- Nền tảng ExpressJS (EJS, Routes, Controller) 
+- Đăng nhập passport-local, Express-Session
+- Database: Mongodb Cloud,  mongo, mongoose
+- Đầy đủ chức năng đăng nhập, đăng ký, thêm, xóa, sửa.
+- Chú thích đầy đủ các vấn đề gặp phải trong khi code và các vấn đề chưa hiểu
+
 Cấu hình NODEJS (Môi trường tương thích)
+-------------------------------------
 Cài đặt bản nodejs 8.11.1 vì lý do tương thích với Firebase và ES6
 https://nodejs.org/ja/blog/release/v8.11.1/
 
@@ -10,6 +20,7 @@ Vào https://cloud.mongodb.com/ đăng ký tài khoản và tạo CSDL, thay và
 Chạy thử
 --------------------------------------
 nodemon server.js
+http://localhost:5000
 
 Bài 1: EJS
 https://viblo.asia/p/su-dung-ejs-de-quan-ly-view-trong-node-app-RnB5peeGKPG
@@ -39,7 +50,8 @@ passport.deserializeUser(function(id, done) {
     });            └──────────────→ user object attaches to the request as req.user   
 });
 
-
+Biến môi trường .env
+https://kipalog.com/posts/Node-js-va-bien-moi-truong--env
 
 Nguồn tài liệu tham khảo:
 --------------------------------------

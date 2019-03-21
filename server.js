@@ -1,3 +1,7 @@
+'use strict';
+// Khai báo biến môi trường
+require('dotenv').config();
+
 // set up ==================================================================
 const express = require('express');
 const app = express();
@@ -13,7 +17,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Configuring the database =================================================
-const dbConfig = "mongodb://admin:admin@nguyennt234-shard-00-00-i2lw1.mongodb.net:27017,nguyennt234-shard-00-01-i2lw1.mongodb.net:27017,nguyennt234-shard-00-02-i2lw1.mongodb.net:27017/taothoiquentot?ssl=true&replicaSet=nguyennt234-shard-0&authSource=admin&retryWrites=true";
+const dbConfig = process.env.DB_CONFIG;
 mongoose.set('useCreateIndex', true);
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig, {
@@ -51,9 +55,7 @@ let ensureLogin = async(req, res, next) => {
 }
 
 // Router ======================================================================
-require('./app/routes/api.routes')(app);
 require('./app/routes/index.routes')(app);
-require('./app/routes/note.routes')(app, ensureLogin);
 require('./app/routes/user.routes')(app, passport, ensureLogin);
 
 // Error =======================================================================
