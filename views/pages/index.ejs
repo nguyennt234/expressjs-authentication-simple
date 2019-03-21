@@ -1,0 +1,38 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <h1>Nguyễn Trung Nguyên</h1>
+            <h2>Blog về lập trình ứng dụng notejs</h2>
+            <% if (!user){ %>
+            	<p>Welcome! Please <a href="/login">log in</a></p>
+            <% } else { %>
+            	<p>Hello, <%= user.fullname %>. <a href="/logout">Logout Here!</a></p>
+            	<p>
+                    <% users.forEach(function(re) { %>
+                        <li><%= re.fullname %> - <%= re.email %> - <a href="user/delete/<%= re._id %>">Delete</a> - <a href="user/edit/<%= re._id %>">edit</a></li>
+                    <% }); %>
+                </p>
+            <% } %>
+            
+            <a href="/register">Register</a>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>
