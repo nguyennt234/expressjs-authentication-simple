@@ -41,7 +41,6 @@ passport.deserializeUser(function(id, done) {
 
 
 
-
 Nguồn tài liệu tham khảo:
 --------------------------------------
 https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/

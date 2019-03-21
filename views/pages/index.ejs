@@ -13,20 +13,14 @@
 
     <main>
         <div class="jumbotron">
-            <h1>Nguyễn Trung Nguyên</h1>
-            <h2>Blog về lập trình ứng dụng notejs</h2>
+            <h1>ExpressJS Authentication</h1>  
             <% if (!user){ %>
-            	<p>Welcome! Please <a href="/login">log in</a></p>
+                <p>Chào mừng! xin vui lòng bấm vào đây để <a href="/login">Đăng nhập</a></p>
+                <a href="/register">Đăng ký tài khoản</a>
             <% } else { %>
-            	<p>Hello, <%= user.fullname %>. <a href="/logout">Logout Here!</a></p>
-            	<p>
-                    <% users.forEach(function(re) { %>
-                        <li><%= re.fullname %> - <%= re.email %> - <a href="user/delete/<%= re._id %>">Delete</a> - <a href="user/edit/<%= re._id %>">edit</a></li>
-                    <% }); %>
-                </p>
-            <% } %>
+            	<p>Xin chào, <%= user.fullname %>. <a href="/logout">Đăng xuất!</a></p>            	
+            <% } %>           
             
-            <a href="/register">Register</a>
         </div>
     </main>
 

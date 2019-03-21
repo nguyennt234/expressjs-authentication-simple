@@ -5,8 +5,7 @@ exports.index = async(req, res) => {
     await User.find()
         .then(users => {
             var tagline = "...";
-            res.render('pages/index', {
-                users: users,
+            res.render('pages/index', {                
                 user: req.user,
                 tagline: tagline,
                 requestTime: req.requestTime
