@@ -1,0 +1,10 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "emmet.includeLanguages": {
+        "*.ejs": "html"
+    },
+    "files.associations": {
+        "*.ejs": "html"
+    },
+}

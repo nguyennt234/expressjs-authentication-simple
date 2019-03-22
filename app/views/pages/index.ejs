@@ -2,9 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <% include ../partials/head %>
 </head>
+
 <body class="container">
 
     <header>
@@ -13,14 +15,14 @@
 
     <main>
         <div class="jumbotron">
-            <h1>ExpressJS Authentication</h1>  
             <% if (!user){ %>
-                <p>Chào mừng! xin vui lòng bấm vào đây để <a href="/login">Đăng nhập</a></p>
-                <a href="/register">Đăng ký tài khoản</a>
+            <p>Bấm vào đây để <a href="/login">Đăng nhập</a></p>
+            <a href="/register">Đăng ký tài khoản</a>
             <% } else { %>
-            	<p>Xin chào, <%= user.fullname %>. <a href="/logout">Đăng xuất!</a></p>            	
-            <% } %>           
-            
+            <p>Xin chào, <%= user.fullname %> - <a href="/user/edit/<%= user._id %>">Sửa thông tin</a> </p>
+            <p><a href="/logout">Đăng xuất!</a></p>
+            <% } %>
+
         </div>
     </main>
 
@@ -29,4 +31,5 @@
     </footer>
 
 </body>
+
 </html>

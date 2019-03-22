@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcrypt-nodejs');
+let mongoose = require('mongoose');
+let bcrypt = require('bcrypt-nodejs');
 
-var userSchema = new mongoose.Schema({
+let userSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
@@ -19,25 +19,25 @@ var userSchema = new mongoose.Schema({
 });
 
 // generating a hash
-userSchema.methods.generateHash = function(password) {
+userSchema.methods.generateHash = function (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-userSchema.statics.testStatics = function(password) {
+userSchema.statics.testStatics = function (password) {
     console.log(password + " - datest");
 };
 
 // checking if password is valid
-userSchema.methods.validPassword = function(password) {
+userSchema.methods.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-userSchema.pre('save', async function() {
+userSchema.pre('save', async function () {
     console.log("==>" + JSON.stringify(this));
     this.password = await bcrypt.hashSync(this.password, bcrypt.genSaltSync(8), null)
 });
 
-userSchema.pre('findOneAndUpdate', async function() {
+userSchema.pre('findOneAndUpdate', async function () {
     console.log("==>" + JSON.stringify(this._update));
     if (this._update.password.length == 0) {
         this._update = {
@@ -52,6 +52,6 @@ userSchema.pre('findOneAndUpdate', async function() {
     }
 });
 
-var User = mongoose.model('User', userSchema);
+let User = mongoose.model('User', userSchema);
 
 module.exports = User;

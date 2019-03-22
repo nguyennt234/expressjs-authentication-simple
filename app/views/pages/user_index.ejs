@@ -1,0 +1,34 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body class="container">
+
+    <header>
+        <% include ../partials/header %>
+    </header>
+
+    <main>
+        <div class="jumbotron">
+            <p>
+                <% users.forEach(function(re) { %>
+                <li><%= re.fullname %> - <%= re.email %> - <a href="user/delete/<%= re._id %>">Xóa</a> - <a
+                        href="user/edit/<%= re._id %>">Chỉnh sửa</a></li>
+                <% }); %>
+            </p>
+            <a href="/register">Đăng ký</a>
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+
+</html>

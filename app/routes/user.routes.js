@@ -1,77 +1,28 @@
-module.exports = (app, passport) => {
+module.exports = (app, isAuth) => {
     const user = require('../controllers/user.controller.js');
 
     // Create a new User
-    app.get('/register', function(req, res, next) {
-        res.render("pages/user/register");
+    app.get('/register', function (req, res, next) {
+        res.render("pages/user_register");
     });
 
-    app.get('/login', function(req, res, next) {
+    app.get('/login', function (req, res, next) {
         res.render("pages/login");
     });
 
-    app.get('/user/edit/:userId', user.editUser)
+    app.get('/user', isAuth, user.indexUser);
 
-    app.post('/user/update/', user.updateUser)
+    app.get('/user/edit/:userId', user.editUser);
 
-    app.post('/login', function(req, res, next) {
-        passport.authenticate('local-login', function(err, user, info) {
+    app.post('/user/delete/:userId', user.deleteUser);
 
-            if (err) {
-                console.log("local-login error", err);
-                return next(err); // will generate a 500 error
-            }
-            // Generate a JSON response reflecting authentication status
+    app.post('/user/update/', user.updateUser);
 
-            if (!user) {
-                return res.render('pages/login', {
-                    message: info.message
-                });
-            }
+    app.post('/login', user.loginUser);
 
-            // ***********************************************************************
-            // "Note that when using a custom callback, it becomes the application's
-            // responsibility to establish a session (by calling req.login()) and send
-            // a response."
-            // Source: http://passportjs.org/docs
-            // ***********************************************************************
+    app.post('/signup', user.signupUser);
 
-            req.login(user, loginErr => {
-                if (loginErr) {
-                    console.log("loginerr", loginErr)
-                    return next(loginErr);
-                }
-
-                //res.cookie('first_name', user.first_name);
-                //res.cookie('user_id', user.uuid);
-
-                return res.redirect("/");
-
-            });
-        })(req, res, next);
-    });
-
-    app.post('/signup', function(req, res, next) {
-        passport.authenticate('local-signup', function(err, user, info) {
-
-            if (err) {
-                console.log("local-signup error", err);
-                return next(err); // will generate a 500 error
-            }
-
-            if (!user) {
-                return res.render('pages/register', {
-                    message: info.message
-                });
-            }
-
-            return res.render('pages/login', {
-                message: "Xin vui long dang nhap"
-            });
-        })(req, res, next);
-    });
-
-    app.get('/logout', function(req, res) {
+    app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
     });

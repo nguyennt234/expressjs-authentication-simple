@@ -1,0 +1,45 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <main>
+        <div class="jumbotron">
+            <h2>
+                Trang sửa thông tin
+            </h2>
+            <% if (typeof message != 'undefined') { %>
+                <p><%= message %></p>
+            <% } %>
+            <form action="/user/update" method="POST">
+            <div class="form-group">
+                <label for="">Email:</label>
+                <input type="text" name="email" class="form-control"  value="<%= user.email %>" readonly="readonly" />     
+            </div>           
+             <div class="form-group">
+                <label for="">Họ & tên:</label>
+                <input type="text" name="fullname" class="form-control" value="<%= user.fullname %>" />                
+            </div>    
+            <div class="form-group">
+                <label for="">Mật khẩu:</label>
+                <input type="password" name="password" class="form-control" />
+            </div>                    
+                <input type="hidden" name="_id" value="<%= user._id %>" />
+                <input type="submit" value="Cập nhật" class="btn btn-primary">                              
+            </form>
+            
+        </div>
+    </main>
+
+    <footer>
+        <% include ../partials/footer %>
+    </footer>
+
+</body>
+</html>

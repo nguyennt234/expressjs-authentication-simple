@@ -1,5 +1,5 @@
 {
-  "name": "simple-authentication",
+  "name": "expressjs-authentication-simple",
   "version": "1.0.0",
   "description": "Simple authentication with nodejs, express, mongodb.",
   "main": "server.js",
