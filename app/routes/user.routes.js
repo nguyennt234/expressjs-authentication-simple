@@ -12,11 +12,11 @@ module.exports = (app, isAuth) => {
 
     app.get('/user', isAuth, user.indexUser);
 
-    app.get('/user/edit/:userId', user.editUser);
+    app.get('/user/edit/:userId', isAuth, user.editUser);
 
-    app.post('/user/delete/:userId', user.deleteUser);
+    app.get('/user/delete/:userId', isAuth, user.deleteUser);
 
-    app.post('/user/update/', user.updateUser);
+    app.post('/user/update/', isAuth, user.updateUser);
 
     app.post('/login', user.loginUser);
 

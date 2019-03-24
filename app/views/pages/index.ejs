@@ -16,13 +16,12 @@
     <main>
         <div class="jumbotron">
             <% if (!user){ %>
-            <p>Bấm vào đây để <a href="/login">Đăng nhập</a></p>
-            <a href="/register">Đăng ký tài khoản</a>
+            <p>Please click here to <a href="/login">Login</a></p>
+            <a href="/register">Register Account</a>
             <% } else { %>
-            <p>Xin chào, <%= user.fullname %> - <a href="/user/edit/<%= user._id %>">Sửa thông tin</a> </p>
-            <p><a href="/logout">Đăng xuất!</a></p>
+            <p>Hello, <%= user.fullname %> - <a href="/user/edit/<%= user._id %>">Edit Profile</a> </p>
+            <p><a href="/logout">Logout!</a></p>
             <% } %>
-
         </div>
     </main>
 

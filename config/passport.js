@@ -15,7 +15,7 @@ module.exports = (passport) => {
         try {
             let user = await User.findOne({ "_id": id });
             if (!user) {
-                return done(new Error("Không tìm thấy tài khoản"));
+                return done(new Error("Can not found user"));
             }
             done(null, user);
         }
@@ -24,8 +24,7 @@ module.exports = (passport) => {
         }
     });
 
-    //Passport register
-    //TODO ES6 async/await
+    //Passport register    
     passport.use('local-login', new LocalStrategy({
         usernameField: 'email',
         passswordField: 'password',
@@ -34,15 +33,14 @@ module.exports = (passport) => {
         let user = await User.findOne({ "email": email });
         try {
             if (!user) {
-                console.log('Không tìm thấy tài khoản');
                 return done(null, false, {
-                    message: 'Không tìm thấy tài khoản'
+                    message: 'Can not found user'
                 });
             }
             else if (await user.validPassword(password) == false) {
-                console.log('Sai mật khẩu');
+                console.log('Password Wrong!');
                 return done(null, false, {
-                    message: 'Sai mật khẩu'
+                    message: 'Password Wrong!'
                 });
             }
             else {
@@ -57,7 +55,6 @@ module.exports = (passport) => {
 
     }));
 
-    //TODO ES6 async/await
     passport.use('local-signup', new LocalStrategy({
         usernameField: 'email',
         passswordField: 'password',
@@ -66,9 +63,8 @@ module.exports = (passport) => {
         let user = await User.findOne({ "email": email });
         try {
             if (user) {
-                console.log('email đã tồn tại');
                 return done(null, false, {
-                    message: 'Email đã được sử dụng, vui lòng chọn email khác'
+                    message: 'Email existed!'
                 });
             }
             else {

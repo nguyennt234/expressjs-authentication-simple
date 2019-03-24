@@ -1,4 +1,4 @@
-ExpressJS Authentication
+Simple Authentication with ExpressJS
 -------------------------------------
 Ứng dụng đăng nhập đơn giản đầy đủ các chức năng để tham khảo:
 - Nền tảng ExpressJS (EJS, Routes, Controller) 

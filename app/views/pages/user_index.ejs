@@ -17,11 +17,14 @@
         <div class="jumbotron">
             <p>
                 <% users.forEach(function(re) { %>
-                <li><%= re.fullname %> - <%= re.email %> - <a href="user/delete/<%= re._id %>">Xóa</a> - <a
-                        href="user/edit/<%= re._id %>">Chỉnh sửa</a></li>
+                <li><%= re.fullname %> - <%= re.email %> - <a href="user/delete/<%= re._id %>">Delete</a> - <a
+                        href="user/edit/<%= re._id %>">Edit</a></li>
                 <% }); %>
             </p>
-            <a href="/register">Đăng ký</a>
+            <% if (typeof message != 'undefined') { %>
+            <p><%= message %></p>
+            <% } %>
+            <a href="/register">Add more Account</a>
         </div>
     </main>
 

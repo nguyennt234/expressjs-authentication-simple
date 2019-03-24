@@ -3,7 +3,7 @@ const passport = require('passport');
 
 exports.index = async (req, res) => {
     res.render('pages/index', {
-        user: req.user
+        user: req.user,
     });
 };
 
@@ -34,6 +34,7 @@ exports.loginUser = async (req, res, next) => {
                 console.log("loginerr", loginErr)
                 return next(loginErr);
             }
+            req.session.myuser = user;
 
             return res.redirect("/user");
 
@@ -56,9 +57,8 @@ exports.signupUser = async (req, res, next) => {
             });
         }
 
-        return res.render('pages/user', {
-            message: "Nhập thông tin đăng nhập"
-        });
+        res.redirect("/user")
+
     })(req, res, next);
 };
 
@@ -68,6 +68,7 @@ exports.indexUser = async (req, res) => {
     try {
         let users = await User.find();
         res.render('pages/user_index', {
+            message: req.flash("message"),
             users: users,
             user: req.user
         });
@@ -78,25 +79,24 @@ exports.indexUser = async (req, res) => {
     }
 };
 
-//TODO ES6 async/await
 exports.editUser = async (req, res) => {
-    await User.findById(req.params.userId)
-        .then(user => {
-            if (!user) {
-                res.status(404).send({
-                    message: "User not found with id " + req.params.userId
-                });
-            }
+    let user = await User.findById(req.params.userId);
+    try {
+        if (!user) {
+            res.status(404).send({
+                message: "Can not find ID: " + req.params.userId
+            });
+        } else {
             res.render('pages/user_edit', {
                 user: user
             });
-        }).catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while retrieving users."
-            });
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving users."
         });
+    }
 };
-
 
 exports.updateUser = async (req, res) => {
     try {
@@ -108,7 +108,9 @@ exports.updateUser = async (req, res) => {
             fullname: req.body.fullname,
             password: req.body.password
         }, { new: true });
-        res.redirect("/");
+
+        req.flash("message", "Task Successful!");
+        res.redirect("/user");
     }
     catch (e) {
         res.status(500).send({
@@ -118,16 +120,20 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-    console.log("vào đây");
-    /*
+    if (req.params.userId != req.user._id) {
         try {
             await User.findOneAndRemove({ _id: req.params.userId });
-            res.redirect("/");
+            req.flash('message', 'Task Successful!!')
+            res.redirect("/user");
         }
         catch (e) {
             res.status(500).send({
                 message: e.message || "Some error occurred while retrieving users."
             });
-        }*/
+        }
+    } else {
+        req.flash('message', 'You can not delete yourself!')
+        res.redirect("/user");
+    }
 };
 

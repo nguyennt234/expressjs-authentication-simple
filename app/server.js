@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const path = require('path');
+const flash = require('connect-flash');
 const mongoose = require('mongoose');
 const mPORT = process.env.PORT || 5000;
 
@@ -20,6 +21,9 @@ const dbConfig = process.env.DB_CONFIG;
 // DB_CONFIG = mongodb://admin:<password>@nguyennt234-shard-00-00-i2lw1.mongodb.net:27017,nguyennt234-shard-00-01-i2lw1.mongodb.net:27017,nguyennt234-shard-00-02-i2lw1.mongodb.net:27017/test?ssl=true&replicaSet=nguyennt234-shard-0&authSource=admin&retryWrites=true
 // <password> Cần điền vào
 mongoose.set('useCreateIndex', true);
+// Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
+// by default, you need to set it to false.
+mongoose.set('useFindAndModify', false);
 (async () => {
     try {
         const connection = await mongoose.connect(dbConfig, { useNewUrlParser: true });
@@ -33,8 +37,6 @@ mongoose.set('useCreateIndex', true);
 
 // set up our express application ============================================
 
-// TODO: Nghiên cứu kỹ về views
-//console.log(path.join(__dirname, 'views'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
@@ -49,6 +51,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
