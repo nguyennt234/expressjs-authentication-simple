@@ -1,6 +1,6 @@
 Simple Authentication with ExpressJS
 -------------------------------------
-#This project help you understand some basic concept:
+This project help you understand some basic concept:
 - ES6 with async/await (Replacement for  Promise)
 - ExpressJS platform (Models, Routes, Controller)
 - Passport-local login, Express-Session
@@ -35,7 +35,8 @@ Enter Termial: node app/server.js
 Open browser enter: http://localhost:5000
 
 #Problems I stuk & How to solve it
-1. Understand Passportjs
+--------------------------------------
+##1. Understand Passportjs
 ### How to passportjs work
 ```
 passport.serializeUser(function(user, done) {
@@ -60,20 +61,32 @@ passport.deserializeUser(function(id, done) {
 Read: expressjs-authentication-simple\app\controllers\user.controller.js (loginUser, signupUser)
 
 #Reference: 
+--------------------------------------
 ##Session & Login
 https://medium.com/@bmshamsnahid/node-js-authentication-using-passport-js-78386be1f518
+
 https://github.com/bmshamsnahid/Passport-Local-Implementation
+
 https://github.com/b0bbybaldi/Rent-All/blob/master/server.js
+
 https://developer.mozilla.org/vi/docs/Learn/Server-side/Express_Nodejs/mongoose
+
 https://github.com/jaredhanson/passport-local
 
 ##Other:
 https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+
 https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
+
 https://github.com/Createdd/authenticationIntro
+
 https://viblo.asia/p/su-dung-ejs-de-quan-ly-view-trong-node-app-RnB5peeGKPG
+
 https://github.com/nghuuquyen/sociss-class-nodejs/tree/master/src/sociss-blog-v2
+
 https://github.com/CodAffection/Node.js-Expess-MongoDB-CRUD
+
 https://stackabuse.com/the-node-js-request-module/
+
 https://codesquery.com/build-secure-nodejs-rest-api-using-json-web-token/?fbclid=IwAR0Es6NGo4W9GwkydkuBXppICXTcmbeEtxXyqaQwj_wDpLfRH71PIYkr46I
 
