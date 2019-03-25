@@ -37,7 +37,7 @@ Open browser enter: http://localhost:5000
 #Problems I stuk & How to solve it
 --------------------------------------
 ##1. Understand Passportjs
-### How to passportjs work
+ - How to passportjs work
 ```
 passport.serializeUser(function(user, done) {
     done(null, user.id);
@@ -57,12 +57,14 @@ passport.deserializeUser(function(id, done) {
     });            └──────────────→ user object attaches to the request as req.user   
 });
 ```
-### How to use custom passportjs
+ - How to use custom passportjs
 Read: expressjs-authentication-simple\app\controllers\user.controller.js (loginUser, signupUser)
+
 
 #Reference: 
 --------------------------------------
 ##Session & Login
+
 https://medium.com/@bmshamsnahid/node-js-authentication-using-passport-js-78386be1f518
 
 https://github.com/bmshamsnahid/Passport-Local-Implementation
@@ -74,6 +76,7 @@ https://developer.mozilla.org/vi/docs/Learn/Server-side/Express_Nodejs/mongoose
 https://github.com/jaredhanson/passport-local
 
 ##Other:
+
 https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
 
 https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
