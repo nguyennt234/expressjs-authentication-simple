@@ -63,8 +63,8 @@ Read: expressjs-authentication-simple\app\controllers\user.controller.js (loginU
 
 #Reference: 
 --------------------------------------
-##Session & Login
-
+##Session & Login:
+-----------------
 https://medium.com/@bmshamsnahid/node-js-authentication-using-passport-js-78386be1f518
 
 https://github.com/bmshamsnahid/Passport-Local-Implementation
@@ -76,7 +76,7 @@ https://developer.mozilla.org/vi/docs/Learn/Server-side/Express_Nodejs/mongoose
 https://github.com/jaredhanson/passport-local
 
 ##Other:
-
+-------
 https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
 
 https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
