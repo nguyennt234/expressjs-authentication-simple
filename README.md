@@ -1,37 +1,43 @@
 Simple Authentication with ExpressJS
 -------------------------------------
-Ứng dụng đăng nhập đơn giản đầy đủ các chức năng để tham khảo:
-- Nền tảng ExpressJS (EJS, Routes, Controller) 
-- Đăng nhập passport-local, Express-Session
-- Database: Mongodb Cloud,  mongo, mongoose
-- Đầy đủ chức năng đăng nhập, đăng ký, thêm, xóa, sửa.
-- Chú thích đầy đủ các vấn đề gặp phải trong khi code và các vấn đề chưa hiểu
+#This project help you understand some basic concept:
+- ES6 with async/await (Replacement for  Promise)
+- ExpressJS platform (Models, Routes, Controller)
+- Passport-local login, Express-Session
+    - How to signup, login with Passport-local
+    - How to use Session in Express
+- Database: Mongodb Cloud, mongo, mongoose
+    - Use free cloud mongodb connect with mongoose
+- Full function to login, register, add, delete, edit.
+- Some problems I stuck and solved when learn about this, hope to helpful
 
-Cấu hình NODEJS (Môi trường tương thích)
+#NODEJS Environment
 -------------------------------------
-Cài đặt bản nodejs 8.11.1 vì lý do tương thích với Firebase và ES6
+Node version 8.11.1 because of it support ES6
 https://nodejs.org/ja/blog/release/v8.11.1/
 
-Hướng dẫn cấu hình Mongo
+#Mongodb Environment for Practice
 -------------------------------------
-Vào https://cloud.mongodb.com/ đăng ký tài khoản và tạo CSDL, thay vào dbConfig tại server.js (Hướng dẫn chi tiết sau)
+- Register a account at https://cloud.mongodb.com/ 
+- Create a free mongodb
+- At connection chose Nodejs version 2.2.12 or later to get connection string, something like this:
 "mongodb://admin:<password>@nguyennt234-shard-00-00-i2lw1.mongodb.net:27017,nguyennt234-shard-00-01-i2lw1.mongodb.net:27017,nguyennt234-shard-00-02-i2lw1.mongodb.net:27017/test?ssl=true&replicaSet=nguyennt234-shard-0&authSource=admin&retryWrites=true";
+[Guide Here](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose#Setting_up_the_MongoDB_database)
 
-Chạy thử
+#Environment Variable
 --------------------------------------
-nodemon server.js
-http://localhost:5000
+At root project create ".env" file with content:
+DB_CONFIG = Mongodb Connection String
 
-Bài 1: EJS
-https://viblo.asia/p/su-dung-ejs-de-quan-ly-view-trong-node-app-RnB5peeGKPG
+#Run
+--------------------------------------
+Enter Termial: node app/server.js
+Open browser enter: http://localhost:5000
 
-Bài 2: Session & Login
-https://medium.com/@bmshamsnahid/node-js-authentication-using-passport-js-78386be1f518
-https://github.com/bmshamsnahid/Passport-Local-Implementation
-https://github.com/b0bbybaldi/Rent-All/blob/master/server.js
-https://developer.mozilla.org/vi/docs/Learn/Server-side/Express_Nodejs/mongoose
-https://github.com/jaredhanson/passport-local
-
+#Problems I stuk & How to solve it
+1. Understand Passportjs
+### How to passportjs work
+```
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });              │
@@ -49,31 +55,25 @@ passport.deserializeUser(function(id, done) {
         done(err, user);
     });            └──────────────→ user object attaches to the request as req.user   
 });
+```
+### How to use custom passportjs
+Read: expressjs-authentication-simple\app\controllers\user.controller.js (loginUser, signupUser)
 
-Biến môi trường .env
-https://kipalog.com/posts/Node-js-va-bien-moi-truong--env
+#Reference: 
+##Session & Login
+https://medium.com/@bmshamsnahid/node-js-authentication-using-passport-js-78386be1f518
+https://github.com/bmshamsnahid/Passport-Local-Implementation
+https://github.com/b0bbybaldi/Rent-All/blob/master/server.js
+https://developer.mozilla.org/vi/docs/Learn/Server-side/Express_Nodejs/mongoose
+https://github.com/jaredhanson/passport-local
 
-Nguồn tài liệu tham khảo:
---------------------------------------
+##Other:
 https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
-
 https://medium.com/createdd-notes/starting-with-authentication-a-tutorial-with-node-js-and-mongodb-25d524ca0359
-
 https://github.com/Createdd/authenticationIntro
-
 https://viblo.asia/p/su-dung-ejs-de-quan-ly-view-trong-node-app-RnB5peeGKPG
-
 https://github.com/nghuuquyen/sociss-class-nodejs/tree/master/src/sociss-blog-v2
-
 https://github.com/CodAffection/Node.js-Expess-MongoDB-CRUD
-
 https://stackabuse.com/the-node-js-request-module/
-
 https://codesquery.com/build-secure-nodejs-rest-api-using-json-web-token/?fbclid=IwAR0Es6NGo4W9GwkydkuBXppICXTcmbeEtxXyqaQwj_wDpLfRH71PIYkr46I
 
-------------------------------------------
-
-
-Câu hỏi cần giải quyết:
-
-1. Phân biệt statics và instance Method Mongo
