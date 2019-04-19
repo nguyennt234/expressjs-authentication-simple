@@ -21,7 +21,7 @@ https://nodejs.org/ja/blog/release/v8.11.1/
 - Register a account at https://cloud.mongodb.com/ 
 - Create a free mongodb
 - At connection chose Nodejs version 2.2.12 or later to get connection string, something like this:
-"mongodb://admin:<password>@nguyennt234-shard-00-00-i2lw1.mongodb.net:27017,nguyennt234-shard-00-01-i2lw1.mongodb.net:27017,nguyennt234-shard-00-02-i2lw1.mongodb.net:27017/test?ssl=true&replicaSet=nguyennt234-shard-0&authSource=admin&retryWrites=true";
+"mongodb://admin:'password'@nguyennt234-shard-00-00-i2lw1.mongodb.net:27017,nguyennt234-shard-00-01-i2lw1.mongodb.net:27017,nguyennt234-shard-00-02-i2lw1.mongodb.net:27017/test?ssl=true&replicaSet=nguyennt234-shard-0&authSource=admin&retryWrites=true";
 [Guide Here](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose#Setting_up_the_MongoDB_database)
 
 #Environment Variable
